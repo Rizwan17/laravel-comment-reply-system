@@ -4,7 +4,6 @@ $(document).ready(function(){
         $(".comment-container").delegate(".reply","click",function(){
 
             var well = $(this).parent().parent();
-            var well = $(this).parent().parent();
             var cid = $(this).attr("cid");
             var name = $(this).attr('name_a');
             var token = $(this).attr('token');
