@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::latest('created_at')->get();
         return view('home', ['comments' => $comments]);
     }
 }

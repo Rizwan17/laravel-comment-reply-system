@@ -10,6 +10,7 @@ class Reply extends Model
     protected $fillable = [
     	'comment_id',
     	'name',
-    	'reply'
+    	'reply',
+    	'user_id'
     ];
 }

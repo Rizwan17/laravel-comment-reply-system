@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/comments','CommentsController');
 Route::resource('/replies','RepliesController');
+Route::post('/replies/ajaxDelete','RepliesController@ajaxDelete');
