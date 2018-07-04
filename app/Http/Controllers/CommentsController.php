@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,6 +95,21 @@ class CommentsController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        if (Auth::check()) {
+
+            $reply = Reply::where(['comment_id'=>$comment->id]);
+            $comment = Comment::where(['user_id'=>Auth::user()->id, 'id'=>$comment->id]);
+            if ($reply->count() > 0 && $comment->count() > 0) {
+                $reply->delete();
+                $comment->delete();
+                return 1;
+            }else if($comment->count() > 0){
+                $comment->delete();
+                return 2;
+            }else{
+                return 3;
+            }
+
+        }    
     }
 }
